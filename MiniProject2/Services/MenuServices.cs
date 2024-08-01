@@ -29,10 +29,12 @@ namespace MiniProject2.Services
             var daftarMenu = GetMenuById(menu.Id);
             if (daftarMenu != null) return;
 
+            daftarMenu.Id = menu.Id;
             daftarMenu.Name = menu.Name;
             daftarMenu.Price = menu.Price;
             daftarMenu.Category = menu.Category;
             daftarMenu.CreatedDate = menu.CreatedDate;
+            daftarMenu.Rating = menu.Rating;
             daftarMenu.IsAvailable = menu.IsAvailable;
 
         }

@@ -26,7 +26,10 @@ namespace MiniProject2.Services
         public string GetOrderStatus(int orderId)
         {
             var order = DisplayOrderDetails(orderId);
-            if (order == null) throw new Exception("Order tidak ada.");
+            if (order == null)
+            {
+                throw new Exception("Order tidak ada.");
+            }
             return order.OrderStatus;
         }
 
@@ -42,7 +45,10 @@ namespace MiniProject2.Services
         public void CancelOrder(int orderId)
         {
             var order = DisplayOrderDetails(orderId);
-            if (order == null) throw new Exception("Order tidak ada.");
+            if (order == null)
+            {
+                throw new Exception("Order tidak ada.");
+            }
         }
     }
 }
