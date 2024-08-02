@@ -31,7 +31,6 @@ namespace MiniProject2.Services
             {
                 return;
             }
-            daftarMenu.Id = menu.Id;
             daftarMenu.Name = menu.Name;
             daftarMenu.Price = menu.Price;
             daftarMenu.Category = menu.Category;
