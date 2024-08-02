@@ -5,7 +5,7 @@ using MiniProject2.Models;
 namespace MiniProject2.Controllers
 {
     [ApiController]
-    [Route("[controller]")]
+    [Route("api/[controller]")]
     public class MenuController : ControllerBase
     {
         private readonly IMenuServices _menuServices;
@@ -15,7 +15,7 @@ namespace MiniProject2.Controllers
             _menuServices = menuServices;
         }
         //Add Menu
-        [HttpPost("AddMenu")]
+        [HttpPost]
         public IActionResult AddMenu(Menu menu)
         {
             _menuServices.AddMenu(menu);
@@ -23,14 +23,14 @@ namespace MiniProject2.Controllers
         }
 
         //Get AllMenu
-        [HttpGet("GetMenu")]
+        [HttpGet]
         public List<Menu> GetAllMenu()
         {
             return _menuServices.GetAllMenus();
         }
 
         //Get MenuById
-        [HttpGet("GetMenu/{id}")]
+        [HttpGet("{id}")]
         public ActionResult GetMenuById(int id)
         {
             var menu = _menuServices.GetMenuById(id);
@@ -41,21 +41,21 @@ namespace MiniProject2.Controllers
             return Ok(menu);
         }
 
-        [HttpPut("UpdateMenu")]
+        [HttpPut]
         public ActionResult UpdateMenu(Menu menu)
         {
             _menuServices.UpdateMenu(menu);
             return Ok(menu);
         }
 
-        [HttpDelete("DeleteMenu/{id}")]
+        [HttpDelete("{id}")]
         public ActionResult DeleteMenu(int id)
         {
             _menuServices.DeleteMenu(id);
             return Ok("Menu Telah Dihapus");
         }
 
-        [HttpPost("AddRating/{id}/{rating}")]
+        [HttpPost("{id}/{rating}")]
         public IActionResult AddRating(int id, int rating)
         {
             _menuServices.AddRating(id, rating);

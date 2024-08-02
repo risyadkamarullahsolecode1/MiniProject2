@@ -15,17 +15,6 @@ namespace MiniProject2.Models
 
         public Order() { }
 
-        public Order(int id, int customerId, DateTime orderDate, int totalPrice, string orderStatus, string note)
-        {
-            Id = id;
-            CustomerId = customerId;
-            OrderDate = orderDate;
-            TotalPrice = totalPrice;
-            OrderStatus = orderStatus;
-            Note = note;
-            OrderedItem = new List<Menu>();
-        }
-
         public void CalculateTotalOrder()
         {
             TotalPrice = OrderedItem.Sum(item => item.Price);

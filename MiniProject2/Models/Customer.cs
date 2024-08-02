@@ -15,15 +15,5 @@ namespace MiniProject2.Models
         [StringLength(200)]
         public string Address { get; set; }
         public DateTime RegistrationDate {  get; set; }
-
-        public Customer(int customerId, string name,int phoneNumber , string email, string address, DateTime registrationDate)
-        {
-            CustomerId = customerId;
-            Name = name;
-            PhoneNumber = phoneNumber;
-            Email = email;
-            Address = address;
-            RegistrationDate = registrationDate;
-        }
     }
 }

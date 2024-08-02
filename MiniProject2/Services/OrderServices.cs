@@ -72,6 +72,7 @@ namespace MiniProject2.Services
             {
                 throw new Exception("Order tidak ada.");
             }
+            order.OrderStatus = "Cancelled";
         }
     }
 }

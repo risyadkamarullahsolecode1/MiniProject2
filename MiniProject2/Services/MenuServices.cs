@@ -27,8 +27,10 @@ namespace MiniProject2.Services
         public void UpdateMenu(Menu menu)
         {
             var daftarMenu = GetMenuById(menu.Id);
-            if (daftarMenu != null) return;
-
+            if (daftarMenu != null)
+            {
+                return;
+            }
             daftarMenu.Id = menu.Id;
             daftarMenu.Name = menu.Name;
             daftarMenu.Price = menu.Price;
@@ -36,7 +38,6 @@ namespace MiniProject2.Services
             daftarMenu.CreatedDate = menu.CreatedDate;
             daftarMenu.Rating = menu.Rating;
             daftarMenu.IsAvailable = menu.IsAvailable;
-
         }
 
         // Delete

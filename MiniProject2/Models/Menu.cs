@@ -17,15 +17,5 @@ namespace MiniProject2.Models
         public DateTime CreatedDate { get; set; }
         public bool IsAvailable {  get; set; }
 
-        public Menu(int id, string name, decimal price, string category, int rating, DateTime createdDate, bool isAvailable)
-        {
-            Id = id;
-            Name = name;
-            Price = price;
-            Category = category;
-            Rating = rating;
-            CreatedDate = createdDate;
-            IsAvailable = isAvailable;
-        }
     }
 }

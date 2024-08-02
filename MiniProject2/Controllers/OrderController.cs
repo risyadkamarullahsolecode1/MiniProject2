@@ -5,7 +5,7 @@ using MiniProject2.Services;
 namespace MiniProject2.Controllers
 {
     [ApiController]
-    [Route("[controller]")]
+    [Route("api/[controller]")]
     public class OrderController : ControllerBase
     {
         private readonly IOrderServices _orderServices;
@@ -15,14 +15,14 @@ namespace MiniProject2.Controllers
             _orderServices = orderServices;
         }
 
-        [HttpPost("PlaceOrder")]
-        public IActionResult PlaceOrder(int customerId, [FromBody] List<int> menuId, string note)
+        [HttpPost]
+        public IActionResult PlaceOrder(int customerId, string note, [FromBody] List<int> menuId)
         {
             var orderId = _orderServices.PlaceOrder(customerId, menuId, note);
-            return Ok(orderId);
+            return Ok("Data Order ke " + orderId + " telah di buat");
         }
 
-        [HttpGet("DisplayOrderDetails/{id}")]
+        [HttpGet("{id}")]
         public IActionResult DisplayOrderDetails(int id)
         {
             var order = _orderServices.DisplayOrderDetails(id);
@@ -33,25 +33,25 @@ namespace MiniProject2.Controllers
             return Ok(order);
         }
 
-        [HttpGet("GetOrderStatus/{id}/orderStatus")]
+        [HttpGet("{id}/orderStatus")]
         public IActionResult GetOrderStatus(int id) 
         {
             var orderStatus = _orderServices.GetOrderStatus(id);
             return Ok(orderStatus);
         }
 
-        [HttpPut("UpdateOrderStatus/{id}/orderStatus")]
+        [HttpPut("{id}/orderStatus")]
         public IActionResult UpdateOrderStatus(int id, [FromBody] string orderStatus)
         {
             _orderServices.UpdateOrderStatus(id, orderStatus);
             return Ok("Data order telah di update");
         }
 
-        [HttpDelete("CancelOrder/{id}")]
+        [HttpDelete("{id}")]
         public IActionResult CancelOrder(int id)
         {
             _orderServices.CancelOrder(id);
-            return Ok("Data order telah dihapus");
+            return Ok("Data order telah di cancel");
         }
     }
 }

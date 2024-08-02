@@ -5,7 +5,7 @@ using MiniProject2.Models;
 namespace MiniProject2.Controllers
 {
     [ApiController]
-    [Route("[controller]")]
+    [Route("api/[controller]")]
     public class CustomerController : ControllerBase
     {
         private readonly ICustomerServices _customerservices;
@@ -16,7 +16,7 @@ namespace MiniProject2.Controllers
         }
 
         //Add Customer
-        [HttpPost("AddCustomer")]
+        [HttpPost]
         public IActionResult AddCustomer(Customer customer)
         {
             _customerservices.AddCustomer(customer);
@@ -24,14 +24,14 @@ namespace MiniProject2.Controllers
         }
 
         //Get All Customer
-        [HttpGet("GetCustomer")]
-        public List<Customer> GetAllCustomer(Customer customer)
+        [HttpGet]
+        public List<Customer> GetAllCustomer()
         {
             return _customerservices.GetAllCustomer();
         }
 
         //Get CustomerById
-        [HttpGet("GetCustomer/{id}")]
+        [HttpGet("{id}")]
         public IActionResult GetCustomerById(int id)
         {
             var customer = _customerservices.GetCustomerById(id);
@@ -43,7 +43,7 @@ namespace MiniProject2.Controllers
         }
 
         //Update
-        [HttpPut("UpdateCustomer")]
+        [HttpPut]
         public IActionResult UpdateCustomer(Customer customer)
         {
             _customerservices.UpdateCustomer(customer);
@@ -51,11 +51,11 @@ namespace MiniProject2.Controllers
         }
 
         //Delete
-        [HttpDelete("DeleteCustomer/{id}")]
+        [HttpDelete("{id}")]
         public IActionResult DeleteCustomer(int id)
         {
             _customerservices.DeleteCustomer(id);
-            return Ok("Data Telah Dihapus");
+            return Ok($"Data Customer dengan id {id} Telah di hapus");
         }
     }
 }
