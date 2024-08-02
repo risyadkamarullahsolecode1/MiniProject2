@@ -15,9 +15,26 @@ namespace MiniProject2.Services
             _menuServices = menuServices;
         }
 
-        public int PlaceOrder()
+        public int PlaceOrder(int customerId, List<int> menuId, string note)
         {
-            return _orders.Count;
+            var customer = _customerServices.GetCustomerById(customerId);
+            if (customer == null) throw new Exception("Customer does not exist.");
+
+            var orderedItems = menuId.Select(id => _menuServices.GetMenuById(id)).Where(menu => menu != null && menu.IsAvailable).ToList();
+            if (orderedItems.Count != menuId.Count) throw new Exception("Some menu items are not available.");
+
+            var order = new Order
+            {
+                Id = _orders.Count + 1,
+                CustomerId = customerId,
+                OrderDate = DateTime.Now,
+                OrderStatus = "Processed",
+                Note = note,
+                OrderedItem = orderedItems
+            };
+            order.CalculateTotalOrder();
+            _orders.Add(order);
+            return order.Id;
         }
         public Order DisplayOrderDetails(int orderId)
         {

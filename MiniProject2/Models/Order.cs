@@ -13,6 +13,8 @@ namespace MiniProject2.Models
         public string Note { get; set; }
         public List<Menu> OrderedItem { get; set; }
 
+        public Order() { }
+
         public Order(int id, int customerId, DateTime orderDate, int totalPrice, string orderStatus, string note)
         {
             Id = id;

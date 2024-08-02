@@ -9,6 +9,6 @@ namespace MiniProject2.Interfaces
         Menu GetMenuById(int id);
         void UpdateMenu(Menu menu);
         void DeleteMenu(int id);
-        int AddRating(int id, int rating);
+        void AddRating(int id, int rating);
     }
 }

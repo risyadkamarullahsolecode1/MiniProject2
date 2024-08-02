@@ -33,6 +33,7 @@ namespace MiniProject2.Services
             {
                 return;
             }
+            daftarCustomer.CustomerId = customer.CustomerId;
             daftarCustomer.Name = customer.Name;
             daftarCustomer.Email = customer.Email;
             daftarCustomer.PhoneNumber = customer.PhoneNumber;

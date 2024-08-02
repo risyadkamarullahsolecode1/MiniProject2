@@ -23,7 +23,7 @@ namespace MiniProject2.Controllers
         }
 
         //Get AllMenu
-        [HttpGet("GetAllMenu")]
+        [HttpGet]
         public List<Menu> GetAllMenu()
         {
             return _menuServices.GetAllMenus();
@@ -53,6 +53,13 @@ namespace MiniProject2.Controllers
         {
             _menuServices.DeleteMenu(id);
             return Ok("Menu Telah Dihapus");
+        }
+
+        [HttpPost("AddRating/{id}/{rating}")]
+        public IActionResult AddRating(int id, int rating)
+        {
+            _menuServices.AddRating(id, rating);
+            return Ok();
         }
     }
 }

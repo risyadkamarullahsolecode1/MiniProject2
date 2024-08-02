@@ -24,7 +24,7 @@ namespace MiniProject2.Controllers
         }
 
         //Get All Customer
-        [HttpGet("GetAllCustomer")]
+        [HttpGet]
         public List<Customer> GetAllCustomer(Customer customer)
         {
             return _customerservices.GetAllCustomer();

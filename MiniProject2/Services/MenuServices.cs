@@ -49,9 +49,13 @@ namespace MiniProject2.Services
             }
         }
 
-        public int AddRating(int id, int rating)
+        public void AddRating(int id, int rating)
         {
-            return 1;
+            var menu = GetMenuById(id);
+            if (menu != null)
+            {
+                menu.Rating = rating;
+            }
         }
     }
 }
