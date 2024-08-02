@@ -24,14 +24,14 @@ namespace MiniProject2.Controllers
         }
 
         //Get All Customer
-        [HttpGet]
+        [HttpGet("GetCustomer")]
         public List<Customer> GetAllCustomer(Customer customer)
         {
             return _customerservices.GetAllCustomer();
         }
 
         //Get CustomerById
-        [HttpGet("GetCustomerById/{id}")]
+        [HttpGet("GetCustomer/{id}")]
         public IActionResult GetCustomerById(int id)
         {
             var customer = _customerservices.GetCustomerById(id);

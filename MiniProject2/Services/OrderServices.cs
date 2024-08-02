@@ -18,10 +18,16 @@ namespace MiniProject2.Services
         public int PlaceOrder(int customerId, List<int> menuId, string note)
         {
             var customer = _customerServices.GetCustomerById(customerId);
-            if (customer == null) throw new Exception("Customer does not exist.");
+            if (customer == null)
+            {
+                throw new Exception("Customer tidak ada");
+            }
 
             var orderedItems = menuId.Select(id => _menuServices.GetMenuById(id)).Where(menu => menu != null && menu.IsAvailable).ToList();
-            if (orderedItems.Count != menuId.Count) throw new Exception("Some menu items are not available.");
+            if (orderedItems.Count != menuId.Count)
+            {
+                throw new Exception("Menu Tidak Tersedia");
+            }
 
             var order = new Order
             {

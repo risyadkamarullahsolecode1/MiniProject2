@@ -23,14 +23,14 @@ namespace MiniProject2.Controllers
         }
 
         //Get AllMenu
-        [HttpGet]
+        [HttpGet("GetMenu")]
         public List<Menu> GetAllMenu()
         {
             return _menuServices.GetAllMenus();
         }
 
         //Get MenuById
-        [HttpGet("GetMenuById/{id}")]
+        [HttpGet("GetMenu/{id}")]
         public ActionResult GetMenuById(int id)
         {
             var menu = _menuServices.GetMenuById(id);
