@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using MiniProject2.Interfaces;
+using MiniProject2.Models;
 using MiniProject2.Services;
 
 namespace MiniProject2.Controllers
@@ -16,10 +17,10 @@ namespace MiniProject2.Controllers
         }
 
         [HttpPost]
-        public IActionResult PlaceOrder(int customerId, string note, [FromBody] List<int> menuId)
+        public IActionResult PlaceOrder([FromBody] OrderRequest orderRequest)
         {
-            var orderId = _orderServices.PlaceOrder(customerId, menuId, note);
-            return Ok("Data Order ke " + orderId + " telah di buat");
+            var order = _orderServices.PlaceOrder(orderRequest.CustomerId, orderRequest.MenuId, orderRequest.Note);
+            return Ok(order);
         }
 
         [HttpGet("{id}")]
