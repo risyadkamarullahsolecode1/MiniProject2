@@ -20,7 +20,7 @@ namespace MiniProject2.Controllers
         public IActionResult PlaceOrder([FromBody] OrderRequest orderRequest)
         {
             var order = _orderServices.PlaceOrder(orderRequest.CustomerId, orderRequest.MenuId, orderRequest.Note);
-            return Ok(order);
+            return Ok("Order dengan id ke "+order +" telah di input");
         }
 
         [HttpGet("{id}")]
